@@ -22,3 +22,42 @@ h3 {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.btn {
+  /* background-color: blue; */
+  padding: 0.6rem 2rem;
+  border-radius: 40px;
+  color: white;
+  /* box-shadow: 2px 2px 10px blue; */
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: rgb(68, 68, 255);
+}
+
+.styled-table {
+  font-size: 1rem;
+  border-collapse: collapse;
+  /* background: rgb(52, 52, 254); */
+  /* color: white; */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px gray;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.styled-table th {
+  background-color: #f2f2f2;
+}
+
+.custom-flex {
+  display: flex;
+  justify-content: flex-start;
+  /* gap: 100px; */
+}
