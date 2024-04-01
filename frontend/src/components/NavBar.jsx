@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -13,16 +13,16 @@ const Navbar = () => {
         </div>
         <ul className='flex gap-8 text-white text-lg'>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
-            Home
+            <Link to='/'>Home</Link>
           </li>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
-            Dashboard
+            <Link to='/dashboard'>Dashboard</Link>
           </li>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
-            Account
+            <Link to='/'>Account</Link>
           </li>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
-            Support
+            <Link to='/'>Support</Link>
           </li>
         </ul>
       </div>
