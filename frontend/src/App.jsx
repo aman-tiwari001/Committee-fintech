@@ -6,6 +6,8 @@ import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
 import Details from "./pages/Details";
 import TestingRazorpay from "./pages/TestingRazorpay";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/registrationform" element={<Details />} />
           <Route path="/testing_razorpay" element={<TestingRazorpay />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
