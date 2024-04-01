@@ -4,7 +4,9 @@ import CommitteeDashboard from "./pages/CommitteeDashboard";
 import NavBar from "./components/NavBar";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
+import Details from "./pages/Details";
 import TestingRazorpay from "./pages/TestingRazorpay";
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/Dashboard" element={<CommitteeDashboard />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/registrationform" element={<Details />} />
           <Route path="/testing_razorpay" element={<TestingRazorpay />} />
         </Routes>
         <Footer />
