@@ -2,15 +2,18 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CommitteeDashboard from './pages/CommitteeDashboard';
 import NavBar from './components/NavBar';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <>
-    <NavBar />
+      <NavBar />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<CommitteeDashboard />} />
+          <Route path='/Dashboard' element={<CommitteeDashboard />} />
+          <Route path='/' element={<LandingPage />} />
         </Routes>
+
       </BrowserRouter>
     </>
   );
