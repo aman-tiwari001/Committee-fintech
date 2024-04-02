@@ -99,13 +99,13 @@ const CommitteeDashboard = () => {
         </div>
       </section>
       <hr className='bg-gray-500 h-[2px]' />
-      <section className='p-5 flex justify-around gap-36'>
+      <section className='p-5 flex flex-col justify-around gap-36 b md:flex md:flex-row'>
         <ul>
           <h2>Members</h2>
           {membersList.map((member, idx) => {
             return (
               <div
-                className='w-[300%] flex flex-row items-center justify-start gap-2 border-2 border-gray-500 rounded-lg p-2 my-2 bg-blue-100 hover:bg-white cursor-pointer hover:scale-105 transition-transform duration-300'
+                className='w-[100%] flex flex-row items-center justify-start gap-2 border-2 border-gray-500 rounded-lg p-2 my-2 bg-blue-100 hover:bg-white cursor-pointer hover:scale-105 transition-transform duration-300 md:w-[300%]'
                 key={idx}
               >
                 <img src='/user.png' width={35} height={35} alt='member' />

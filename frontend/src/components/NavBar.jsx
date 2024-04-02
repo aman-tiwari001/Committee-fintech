@@ -19,7 +19,7 @@ const Navbar = () => {
             <Link to='/dashboard'>Dashboard</Link>
           </li>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
-            <Link to='/'>Account</Link>
+            <Link to='/signup'>Account</Link>
           </li>
           <li className='cursor-pointer border-b-2 border-transparent hover:border-b-2 hover:border-white'>
             <Link to='/'>Support</Link>
