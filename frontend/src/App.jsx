@@ -27,7 +27,7 @@ function App() {
           <Route path="/registrationform" element={<Details />} />
           <Route path="/rooms" element={<Createroom />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );
