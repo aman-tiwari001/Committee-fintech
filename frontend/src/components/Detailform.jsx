@@ -4,33 +4,13 @@ import { useForm } from "react-hook-form";
 
 const fields = [
   {
-    label: "First Name",
+    label: "Commitee Name",
     type: "text",
-    placeholder: "",
-    required: true,
-    gridCols: 1,
-  },
-  {
-    label: "Last Name",
-    type: "text",
-    placeholder: "",
-    required: true,
-    gridCols: 1,
-  },
-  {
-    label: "Email",
-    type: "email",
-    placeholder: "yourname@example.com",
-    required: true,
-    gridCols: 2,
-  },
-  {
-    label: "Phone",
-    type: "tel",
     placeholder: "",
     required: true,
     gridCols: 2,
   },
+
   {
     label: "Members",
     type: "number",
@@ -39,19 +19,13 @@ const fields = [
     gridCols: 2,
   },
   {
-    label: "Duration",
+    label: "Duration in months",
     type: "number",
     placeholder: "",
     required: true,
-    gridCols: 1,
+    gridCols: 2,
   },
-  {
-    label: "Period",
-    type: "list",
-    placeholder: "",
-    required: true,
-    gridCols: 1,
-  },
+
   {
     label: "Amount",
     type: "number",
@@ -59,20 +33,7 @@ const fields = [
     required: true,
     gridCols: 2,
   },
-  {
-    label: "Password",
-    type: "password",
-    placeholder: "Enter your password",
-    required: true,
-    gridCols: 1,
-  },
-  {
-    label: "Confirm Password",
-    type: "password",
-    placeholder: "Confirm your password",
-    required: true,
-    gridCols: 1,
-  },
+ 
 ];
 
 export default function RegisterForm() {
