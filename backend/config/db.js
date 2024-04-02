@@ -3,8 +3,7 @@ const cors = require('cors'); // Import cors
 const mongoose = require('mongoose');
 const connectDB = () => {
   mongoose
-    .connect(`mongodb://localhost:27017`, {
-      // .connect(`${process.env.MONGODB_URL}/${process.env.DB}`, {
+    .connect(`${process.env.MONGODB_URL}/${process.env.DB}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
