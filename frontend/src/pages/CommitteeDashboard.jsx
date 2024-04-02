@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const CommitteeDashboard = () => {
   const membersList = ['Aman', 'Yash', 'Gopal', 'Shobhit', 'Tanush'];
   const paymentDetails = [
@@ -66,6 +68,7 @@ const CommitteeDashboard = () => {
       console.error(error);
     }
   };
+  const navigate = useNavigate();
 
   return (
     <>
@@ -93,8 +96,11 @@ const CommitteeDashboard = () => {
           <button className='btn bg-red-600 mr-4 my-3 hover:bg-red-500'>
             Withdraw
           </button>
-          <button className='btn bg-blue-700' onClick={handlePayments}>
+          <button className='btn bg-blue-700 mr-4 hover:bg-blue-600' onClick={handlePayments}>
             Pay
+          </button>
+          <button className='btn bg-green-500 hover:bg-green-400' onClick={()=>navigate('/registrationform')}>
+            Create
           </button>
         </div>
       </section>

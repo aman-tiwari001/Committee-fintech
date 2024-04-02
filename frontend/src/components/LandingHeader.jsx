@@ -22,12 +22,11 @@ function LandingHeader() {
           <h1>Together</h1>
         </span>
         <h5 className='w-[250px] text-center m-auto'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas modi
-          minus ab aliquid! Voluptas impedit jcbejb
+        A platform facilitating collective savings and investments through digital means, promoting financial inclusion and security.
         </h5>
         <button
           className='bg-blue-600 w-[120px] p-2 pl-3 pr-3 rounded-[18px] text-white m-auto mt-2 transition-all hover:bg-blue-500'
-          onClick={() => navigate('/signup')}
+          onClick={() => navigate('/login')}
         >
           {' '}
           Get Started
