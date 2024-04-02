@@ -58,7 +58,7 @@ function TestingRazorpay() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ amount: 2, email: formData.email }),
+          body: JSON.stringify({ amount: formData.amount, email: formData.email }),
         });
 
         const data = await response.json();

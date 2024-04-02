@@ -6,6 +6,67 @@ const CommitteeDashboard = () => {
     { date: '01-03-2024', amount: 800, profit: 200 },
     { date: '01-04-2024', amount: 850, profit: 150 },
   ];
+
+  const handlePayments = async () => {
+    // fetch current user details
+    let user;
+    try {
+      const res = await fetch('http://localhost:4000/getuser', {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('logintoken'),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+        }),
+      });
+      user = await res.json();
+      console.log('here is mu user - ', user);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // open razorpay payment gateway for payments
+    try {
+      const response = await fetch('http://localhost:4000/createOrder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: 1000,
+          email: user.email,
+        }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      const options = {
+        key: 'rzp_test_ApfDwyyDcj8yjg',
+        amount: data.amount,
+        currency: data.currency,
+        order_id: data.id,
+        name: user.name,
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: user.phone,
+        },
+
+        notes: {
+          address: 'Razorpay Corporate Office',
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <section className='flex flex-row items-center justify-center gap-10 py-5'>
@@ -26,13 +87,15 @@ const CommitteeDashboard = () => {
             <li>Number of members : 10</li>
             <li>Admin : Aman</li>
             <li>Duration : 11 months</li>
-            <li>Committee Amount per head : $100K</li>
-            <li>Total Amount Raised : $1000K</li>
+            <li>Committee Amount per head : ₹1000</li>
+            <li>Total Amount Raised : ₹10000</li>
           </ul>
           <button className='btn bg-red-600 mr-4 my-3 hover:bg-red-500'>
             Withdraw
           </button>
-          <button className='btn bg-blue-700'>Pay</button>
+          <button className='btn bg-blue-700' onClick={handlePayments}>
+            Pay
+          </button>
         </div>
       </section>
       <hr className='bg-gray-500 h-[2px]' />
