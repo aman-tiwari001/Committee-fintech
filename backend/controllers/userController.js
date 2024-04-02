@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 
 const handleUserSignUp = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, phone, password } = req.body;
 
     // Check whether the email is already registered
     const existingUser = await User.findOne({ email });
@@ -13,8 +13,15 @@ const handleUserSignUp = async (req, res) => {
     }
 
     // Check for all field entered or not
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !phone) {
       return res.status(400).json({ error: 'All field are required' });
+    }
+
+    // Check for valid phone number
+    if (phone.length != 10) {
+      return res
+        .status(400)
+        .json({ error: 'Phone number should contain 10 digits' });
     }
 
     // Check for valid name
@@ -41,13 +48,12 @@ const handleUserSignUp = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create a new user
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, phone, password: hashedPassword });
     await newUser.save();
 
     res
       .status(201)
       .json({ result: newUser, message: 'User registered successfully' });
-
   } catch (error) {
     console.error('Error registering user:', error);
     res.status(500).json({ error: error.message });
@@ -87,7 +93,6 @@ const handleUserLogin = async (req, res) => {
     res
       .status(200)
       .json({ result: user, token, message: 'User logged in successfully' });
-
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: error.message });

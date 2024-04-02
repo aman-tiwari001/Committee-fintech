@@ -98,6 +98,12 @@ const Login = () => {
           >
             Sign in
           </button>
+            <a
+              href='/signup'
+              className='text-sm text-blue-600 hover:text-blue-500'
+            >
+              New to committee? Sign Up
+            </a>
         </form>
       </div>
     </div>

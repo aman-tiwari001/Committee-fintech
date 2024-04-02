@@ -25,8 +25,8 @@ const Signup = () => {
         'http://localhost:4000/auth/signup',
         data
       ); // Replace with your backend API endpoint
-      console.log('Login successful:', response.data);
-      navigate('/dashboard');
+      console.log('Registered successful:', response.data);
+      navigate('/login');
       toast.success('User registered!');
       // Handle successful login (e.g., redirect to another page)
     } catch (error) {
@@ -124,6 +124,9 @@ const Signup = () => {
           >
             Sign in
           </button>
+            <a href='/login' className='text-sm text-blue-600 hover:text-blue-500'>
+              Already have an account? Login
+            </a>
         </form>
       </div>
     </div>

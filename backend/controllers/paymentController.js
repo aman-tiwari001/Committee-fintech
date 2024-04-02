@@ -18,9 +18,8 @@ async function createOrder(req, res) {
 
   razorpayInstance.orders.create(options, (err, order) => {
     if (err) {
-      res.status(500).json({ error: "Some error occured" });
+      res.status(500).json({ error: err });
     }
-
     res.status(200).json({ ...order });
   });
 }

@@ -1,11 +1,12 @@
-const express = require("express");
-const connectDB = require("./config/db.js");
-const userRouter = require("./routes/userRoute.js");
-const cors = require("cors"); // Import cors
-const authenticateUser = require("./middlewares/authenticateUser.js");
-const authorizeUser = require("./middlewares/authorizeUser.js");
-const createOrder = require("./controllers/paymentController.js");
-require("dotenv").config();
+const express = require('express');
+const connectDB = require('./config/db.js');
+const userRouter = require('./routes/userRoute.js');
+const cors = require('cors'); // Import cors
+const authenticateUser = require('./middlewares/authenticateUser.js');
+const authorizeUser = require('./middlewares/authorizeUser.js');
+const createOrder = require('./controllers/paymentController.js');
+const User = require('./models/userModel.js');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -18,24 +19,27 @@ app.use(cors()); // Enable CORS for all routes
 
 app.use(express.json());
 
-app.get("/test", (req, res) => {
-  res.status(200).json({ msg: "Server is UP. working perfectly fine" });
+app.get('/test', (req, res) => {
+  res.status(200).json({ msg: 'Server is UP. working perfectly fine' });
 });
 
 // User Routes
-app.use("/auth", userRouter);
+app.use('/auth', userRouter);
 
 // Apply authentication middleware to protected routes
-app.use("/user", authenticateUser, (req, res) => {
-  // Handle protected route logic here
+app.use('/getuser', authenticateUser, async (req, res) => {
+  const userId = req.body.userId;
+  if (!userId) return res.status(400).json({ error: 'User Id is required' });
+  const user = await User.findById(userId);
+  res.status(200).json(user);
 });
 
 // Apply authorization middleware to restricted routes
-app.use("/admin", authenticateUser, authorizeUser("admin"), (req, res) => {
+app.use('/admin', authenticateUser, authorizeUser('admin'), (req, res) => {
   // Handle admin-only route logic here
 });
 
-app.post("/createOrder", (req, res) => {
+app.post('/createOrder', (req, res) => {
   return createOrder(req, res);
 });
 
